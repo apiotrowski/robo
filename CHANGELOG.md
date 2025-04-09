@@ -1,5 +1,9 @@
 # Changelog
 
+### 5.2.2 09/04/2025
+
+* Backport in composer to Symfony 5.x framework
+
 ### 5.1.0 10/22/2024
 
 * PHP 8.4 compatibility by Andy Postnikov (#1165)
@@ -103,7 +107,7 @@
 * RuntimeException used realtively by Viktor Szépe (#905)
 
 ### 1.4.10 7/29/2019
- 
+
 * Allow default argument for confirm() questions by Dane Powell (#850)
 * Allow command classes to end in Commands or Command by Jelle Sebreghts (#878)
 * ImageMinify: Prevent undefined variable error by Dan (#852) (#854)
@@ -115,9 +119,9 @@
 ### 1.4.7 - 1.4.9 2/19/2019
 
 * Re-release 1.4.6 to remove artifacts inadvertantly added to tagged release.
- 
+
 ### 1.4.6 2/16/2019
- 
+
 * Extend ConfigAwareTrait from consolidation config (#838)
 
 ### 1.4.5 2/15/2019
@@ -269,14 +273,14 @@
    * `$collection->rollback($task);` and `$collection->rollbackCode($callable);` add a rollback function to clean up after a failed task
    * `$collection->completion($task);` and `$collection->completionCode($callable);` add a function that is called once the collection completes or rolls back.
    * `$collection->before();` and `$collection->after();` can be used to add a task or function that runs before or after (respectively) the specified named task. To use this feature, tasks must be given names via an optional `$taskName` parameter when they are added.
-   * Collections may be added to collections, if desired. 
+   * Collections may be added to collections, if desired.
 * [CollectionBuilder] Create tasks and add them to a collection in a single operation.
    * `$this->collectionBuilder()->taskExec('pwd')->taskExec('ls')->run()`
 * Add output formatters
    * If a Robo command returns a string, or a `Result` object with a `$message`, then it will be printed
    * Commands may be annotated to describe output formats that may be used
    * Structured arrays returned from function results may be converted into different formats, such as a table, yml, json, etc.
-   * Tasks must `use TaskIO` for output methods. It is no longer possible to `use IO` from a task. For direct access use `Robo::output()` (not recommended).   
+   * Tasks must `use TaskIO` for output methods. It is no longer possible to `use IO` from a task. For direct access use `Robo::output()` (not recommended).
 * Use league/container to do Dependency Injection
    * *Breaking* Tasks' loadTasks traits must use `$this->task(TaskClass::class);` instead of `new TaskClass();`
    * *Breaking* Tasks that use other tasks must use `$this->collectionBuilder()->taskName();` instead of `new TaskClass();` when creating task objects to call. Implement `Robo\Contract\BuilderAwareInterface` and use `Robo\Contract\BuilderAwareTrait` to add the `collectionBuilder()` method to your task class.
@@ -290,7 +294,7 @@
 * Add --simulate mode that causes tasks to print what they would have done, but make no changes
 * Add `robo generate:task` code-generator to make new stack-based task wrappers around existing classes
 * Add `robo sniff` by @dustinleblanc. Runs the PHP code sniffer followed by the code beautifier, if needed.
-* Implement ArrayInterface for Result class, so result data may be accessed like an array 
+* Implement ArrayInterface for Result class, so result data may be accessed like an array
 * Defer execution of operations in taskWriteToFile until the run() method
 * Add Write::textIfMatch() for taskWriteToFile
 * ResourceExistenceChecker used for error checking in DeleteDir, CopyDir, CleanDir and Concat tasks by @burzum
