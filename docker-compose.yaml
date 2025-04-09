@@ -1,0 +1,12 @@
+services:
+  php-fpm:
+    build: config/docker/php-fpm
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./config/docker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+      - ~/.ssh_docker:/root/.ssh
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "9000:9000" #fpm
